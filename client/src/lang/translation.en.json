@@ -1,7 +1,12 @@
 {
   "title": {
     "dashboard": "Dashboard",
-    "signIn": "SignIn"
+    "signUp": "Sign Up",
+    "signIn": "Sign In"
+  },
+  "signUp": {
+    "header": "Sign Up",
+    "button": "Sign Up"
   },
   "signIn": {
     "header": "Sign In",

@@ -35,8 +35,8 @@ const initialState: TypeState = {
 
 export type TypeSignIn = {
   state: typeof initialState;
-  onSubmit(e: FormEvent): void;
-  onChange(e: ChangeEvent<HTMLInputElement>): void;
+  onSubmit: (e: FormEvent) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 function useSignIn(): TypeSignIn {
@@ -44,9 +44,20 @@ function useSignIn(): TypeSignIn {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [isLoading, setLoading] = useState(false);
 
+  function onChange(e: ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.currentTarget;
+
+    dispatch({
+      type: CHANGE_STATE,
+      payload: {
+        [name]: value,
+      },
+    });
+  }
+
   const onSubmit = async (e: FormEvent) => {
-    e.preventDefault();
     if (isLoading) return;
+    e.preventDefault();
 
     setLoading(true);
     try {
@@ -64,24 +75,12 @@ function useSignIn(): TypeSignIn {
       } else {
         alert('서버에러 서버에러');
       }
-      setLoading(false);
     } catch (err) {
       console.error(err);
       alert('서버에러 서버에러');
-      setLoading(false);
     }
+    setLoading(false);
   };
-
-  function onChange(e: ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.currentTarget;
-
-    dispatch({
-      type: CHANGE_STATE,
-      payload: {
-        [name]: value,
-      },
-    });
-  }
 
   return {
     state,

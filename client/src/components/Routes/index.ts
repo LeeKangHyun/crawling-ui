@@ -1,6 +1,8 @@
 import { lazy } from 'react';
 
-const SignIn = lazy(() => import(/* webpackChunkName: "SignIn" */ '~/pages/SignIn'));
+/** Sign */
+const SignUp = lazy(() => import(/* webpackChunkName: "SignUp */ '~/pages/Sign/SignUp'));
+const SignIn = lazy(() => import(/* webpackChunkName: "SignIn" */ '~/pages/Sign/SignIn'));
 
 const DashBoard = lazy(() => import(/* webpackChunkName: "DashBoard" */ '~/pages/DashBoard'));
 const CrawlingSettings = lazy(() =>
@@ -28,6 +30,11 @@ export const UnAuthRoutes: RoutesArguments[] = [
   {
     path: '/login',
     component: SignIn,
+  },
+
+  {
+    component: SignUp,
+    path: '/join',
   },
 ];
 

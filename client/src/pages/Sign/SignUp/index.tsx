@@ -1,24 +1,22 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
-import SignInContainer from '~/containers/SignIn';
+import SignUpContainer from '~/containers/SignUp';
 
 import { SignWrap } from '~/pages/styled';
 
-interface Props {}
-
-const Sign: FC<Props> = () => {
+const SignUp = () => {
   const { t } = useTranslation();
   return (
     <SignWrap>
       <Helmet>
-        <title>{t('title.signIn')} - Crawling-ui</title>
+        <title>{t('title.signUp')} - Crawling-ui</title>
       </Helmet>
 
-      <SignInContainer />
+      <SignUpContainer />
     </SignWrap>
   );
 };
 
-export default Sign;
+export default SignUp;
